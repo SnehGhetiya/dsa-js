@@ -1,13 +1,29 @@
-const checkIfArrayIsSorted = (numArray) => {
-  for (let i = 1; i <= numArray.length - 1; i++) {
-    if (numArray[i] >= numArray[i - 1]) {
-      continue;
-    } else {
-      return false;
+const checkIfArrayIsSortedAndRotated = (nums) => {
+  let count = 0;
+  const n = nums.length;
+  for (let i = 0; i < n; i++) {
+    if (nums[i] > nums[(i + 1) % n]) {
+      count++;
     }
   }
-  return true;
+  return count <= 1;
 };
 
-const input = [1, 2, 3, 4, 5];
-console.log(checkIfArrayIsSorted(input));
+const input1 = [3, 4, 5, 1, 2];
+const input2 = [1, 2, 3, 4, 5];
+const input3 = [1, 3, 2];
+
+console.log(
+  "Is [3, 4, 5, 1, 2] sorted and rotated?",
+  checkIfArrayIsSortedAndRotated(input1),
+);
+console.log(
+  "Is [1, 2, 3, 4, 5] sorted and rotated?",
+  checkIfArrayIsSortedAndRotated(input2),
+);
+console.log(
+  "Is [1, 3, 2] sorted and rotated?",
+  checkIfArrayIsSortedAndRotated(input3),
+);
+
+console.log(1 % 5);
